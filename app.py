@@ -2,27 +2,43 @@ import streamlit as st
 
 # Page config
 st.set_page_config(
-    page_title="Meet at AWS Re:Invent! 🚀",
-    page_icon="🤝",
+    page_title="Codeium at AWS Re:Invent! ",
+    page_icon="",
     layout="wide"
 )
 
-# Custom CSS
+# Custom CSS with complete light theme
 st.markdown("""
 <style>
-    /* Center content and add max-width */
+    /* Global theme override */
+    .stApp {
+        background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    }
+    
+    /* Override Streamlit's default dark backgrounds */
+    .main {
+        background: transparent !important;
+    }
+    
     .main .block-container {
         max-width: 1200px;
         padding-top: 2rem;
         padding-bottom: 2rem;
         margin: 0 auto;
+        background: transparent !important;
     }
 
-    /* Metrics styling */
+    /* Make all text elements light-themed */
+    .stMarkdown, .stText, p, span {
+        color: #334155 !important;
+    }
+
+    /* Metrics styling with updated colors */
     [data-testid="stMetricLabel"] {
         display: flex;
         justify-content: center;
         width: 100%;
+        color: #334155 !important;
     }
 
     [data-testid="stMetricLabel"] > div {
@@ -34,6 +50,7 @@ st.markdown("""
         display: flex;
         justify-content: center;
         width: 100%;
+        color: #1e293b !important;
     }
 
     [data-testid="stMetricValue"] > div {
@@ -58,6 +75,11 @@ st.markdown("""
     /* Force center alignment for metric elements */
     .stMetric {
         text-align: center !important;
+        background: white !important;
+        padding: 1.5rem;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        border: 1px solid #e2e8f0;
     }
 
     .stMetric > div {
@@ -67,135 +89,100 @@ st.markdown("""
         width: 100%;
     }
 
-    /* Typography */
+    /* Typography with updated colors */
     h1 { 
         font-size: 3rem !important;
         margin-bottom: 1.5rem !important;
+        color: #1e293b !important;
     }
     h2, h3 {
         margin: 2rem 0 !important;
+        color: #334155 !important;
     }
 
-    /* Gradient text */
+    /* Updated gradient text */
     .highlight { 
-        background: linear-gradient(120deg, #6366f1 0%, #4f46e5 100%);
+        background: linear-gradient(120deg, #0ea5e9 0%, #2563eb 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
+        font-weight: 700;
     }
 
-    /* Calendar iframe */
+    /* Calendar iframe with updated styling */
     .calendar-wrapper {
         width: 100%;
         max-width: 1000px;
         margin: 2rem auto;
+        padding: 1rem;
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        border: 1px solid #e2e8f0;
     }
     iframe {
-        border-radius: 12px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
         background: white;
         width: 100%;
     }
 
-    /* Topic cards */
+    /* Topic cards with updated styling */
     .stAlert {
-        border-radius: 10px;
-        margin: 0.5rem 0;
+        border-radius: 12px;
+        border: 1px solid #e2e8f0;
+        background: white !important;
+        color: #334155 !important;
     }
 
-    /* Column styling */
-    div[data-testid="column"] {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        padding: 0 1rem;
+    /* Override any remaining dark theme elements */
+    button[kind="primary"] {
+        background-color: #2563eb !important;
+        color: white !important;
     }
-
-    /* Bullet points */
-    .metrics-list {
-        text-align: left;
-        width: fit-content;
-        margin: 1rem auto;
+    .stButton>button:hover {
+        background-color: #1d4ed8 !important;
+        color: white !important;
     }
-
-    .metrics-list ul {
-        margin: 0;
-        padding-left: 1.5rem;
+    .stProgress > div > div > div {
+        background-color: #2563eb !important;
+    }
+    
+    /* Description text styling */
+    .description {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        margin: 1.5rem auto 2.5rem;
+        max-width: 800px;
+        color: #475569 !important;
     }
 </style>
 """, unsafe_allow_html=True)
 
-# Add container for better centering
-st.markdown('<div class="content-wrapper">', unsafe_allow_html=True)
+# Title
+st.markdown("<h1 style='text-align: center'><span class='highlight'>Codeium</span> at AWS Re:Invent 2024! </h1>", unsafe_allow_html=True)
 
-# Header
-st.markdown("<h1 style='text-align: center;'>Let's Chat at <span class='highlight'>AWS Re:Invent</span>! 🤝</h1>", unsafe_allow_html=True)
+# Create two columns for content and image
+content_col, img_col = st.columns([3, 2])
 
-st.markdown("""
-<p style='text-align: center; font-size: 1.2rem; margin: 1rem 0 3rem;'>
-    Join me to discuss the future of AI-powered development with Codeium - 
-    where coding meets intelligence! ✨
-</p>
-""", unsafe_allow_html=True)
-
-# Benefits section with metrics
-col1, col2, col3 = st.columns(3)
-
-with col1:
-    st.metric("Developer Productivity", "↑ 30%", "vs traditional coding")
+with content_col:
     st.markdown("""
-    <div class="metrics-list">
-    <ul>
-        <li>Real-time code completions</li>
-        <li>Smart code suggestions</li>
-        <li>Context-aware assistance</li>
-    </ul>
+    <div class='description'>
+        Meet with Chris at Re:Invent! Learn how Codeium's AI-powered coding assistant can supercharge your development team's productivity.
     </div>
     """, unsafe_allow_html=True)
-
-with col2:
+    
+    # Metrics in the content column
+    st.metric("Developer Productivity", "↑ 30%", "Boost in output")
     st.metric("Developer Happiness", "↑ 9001%", "IT'S OVER 9000!!!")
-    st.markdown("""
-    <div class="metrics-list">
-    <ul>
-        <li>Less time debugging</li>
-        <li>More time creating</li>
-        <li>Reduced cognitive load</li>
-    </ul>
-    </div>
-    """, unsafe_allow_html=True)
-
-with col3:
     st.metric("Coffee Consumed", "↓ 60%", "Less caffeine needed!")
-    st.markdown("""
-    <div class="metrics-list">
-    <ul>
-        <li>Better code quality</li>
-        <li>Fewer late nights</li>
-        <li>More balanced workday</li>
-    </ul>
-    </div>
-    """, unsafe_allow_html=True)
 
-# Topics we can discuss
-st.markdown("---")
-st.markdown("<h3 style='text-align: center;'>Topics We Can Discuss 💡</h3>", unsafe_allow_html=True)
-
-topics = st.columns(4)
-with topics[0]:
-    st.info("🤖 AI Coding Assistants")
-with topics[1]:
-    st.success("⚡ Codeium Features")
-with topics[2]:
-    st.warning("🚀 Developer Productivity")
-with topics[3]:
-    st.error("💻 Future of Development")
+with img_col:
+    st.image("hoodwinkt_animated_anime_cartoon_monsters_destroying_buildings__46c8d3fc-7175-4c0e-b495-d5522951f726.png", 
+            use_container_width=True)
 
 # Calendar section
-st.markdown("---")
-st.markdown("<h2 style='text-align: center;'>Schedule a Meeting 📅</h2>", unsafe_allow_html=True)
+st.markdown("<h2 style='text-align: center; margin-top: 3rem;'>Schedule a Meeting</h2>", unsafe_allow_html=True)
 
-# Embedded Calendar
+# Embedded calendar
 st.markdown("""
 <div class="calendar-wrapper">
     <iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3ogWZM7q0XNbtOii42H8269xmwhBELYjPqUpWc9dXW5QRVgIgK_LT6aj5Sqd2pdfBJ5CeJP9z4?gv=true" 
@@ -204,5 +191,3 @@ st.markdown("""
     </iframe>
 </div>
 """, unsafe_allow_html=True)
-
-st.markdown('</div>', unsafe_allow_html=True)
